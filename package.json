@@ -1,0 +1,15 @@
+{
+  "name": "interactive-card-details-form",
+  "source": "src/index.html",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "license": "MIT",
+  "author": "Sriveer Neerukonda",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.10.3",
+    "parcel": "^2.10.3"
+  }
+}
