@@ -11,5 +11,8 @@
   "devDependencies": {
     "@parcel/transformer-sass": "^2.10.3",
     "parcel": "^2.10.3"
+  },
+  "dependencies": {
+    "include-media": "^2.0.0"
   }
 }
