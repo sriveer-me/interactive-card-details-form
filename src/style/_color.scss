@@ -1,9 +1,11 @@
-$red: hsl(0, 100%, 66%);
+:root{
+    --red: hsl(0, 100%, 66%);
 
-$light-viola: hsl(249, 99%, 64%);
-$dark-viola: hsl(278, 94%, 30%);
+    --light-viola: hsl(249, 99%, 64%);
+    --dark-viola: hsl(278, 94%, 30%);
 
-$color-neutral-100: hsl(0, 0%, 100%);
-$color-neutral-300: hsl(270, 3%, 87%);
-$color-neutral-700: hsl(279, 6%, 55%);
-$color-neutral-800: hsl(278, 68%, 11%);
+    --color-neutral-100: hsl(0, 0%, 100%);
+    --color-neutral-300: hsl(270, 3%, 87%);
+    --color-neutral-700: hsl(279, 6%, 55%);
+    --color-neutral-800: hsl(278, 68%, 11%);
+}
