@@ -2,3 +2,21 @@
 @import './style/reset';
 @import './style/color';
 @import './style/spacing';
+
+main{
+    display: flex;
+    flex-direction: column;
+    @include media(">=large"){
+        flex-direction: row;
+    }
+
+    height: 100vh;
+}
+
+.gradient-show{
+    background-size: cover;
+    background-image: url(./imgs/bg-main-mobile.png);
+    @include media(">=large"){
+        background-image: url(./imgs/bg-main-desktop.png);
+    }
+}
