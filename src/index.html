@@ -16,6 +16,7 @@
 
     <!-- Web Components -->
     <script src="./components/input.ts"></script>
+    <script type="module" src="./components/card.ts"></script>
 
     <!-- main js module -->
     <script type="module" src="./main.ts"></script>
@@ -74,9 +75,32 @@
             <span class="error-text">Error on input field!</span>
         </label>
     </template>
+
+    <!-- template for the card front -->
+    <template id="card-front-template">
+        <span class="filled-white-circle"></span>
+        <span class="outline-white-circle"></span>
+        <span class="card-number">
+            <span class="card-number-set-1">0000</span>
+            <span class="card-number-set-2">0000</span>
+            <span class="card-number-set-3">0000</span>
+            <span class="card-number-set-4">0000</span>
+        </span>
+        <span class="name">Jane Appleseed</span>
+        <span class="expiry-date">00/00</span>
+    </template>
+
+    <!-- template for the card back -->
+    <template id="card-back-template">
+        <span class="cvv">000</span>
+    </template>
+
     <!-- <app-input id="name-input"/> -->
     <main>
-        <div class="gradient-show"></div>
+        <div class="gradient-show">
+            <app-card-front></app-card-front>
+            <app-card-back></app-card-back>
+        </div>
         <div class="form-show"></div>
     </main>
 </body>

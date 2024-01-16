@@ -1,0 +1,134 @@
+@import '../style/_abstract.scss';
+
+.card{
+    position: absolute;
+    width: 30rem;
+    aspect-ratio: 1.824/1; //the image is of this ratio roughly 
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
+    border-radius: 1.5rem;
+
+    --card-large-font-size: 1.8rem;
+    --card-large-letter-spacing: .3rem;
+    --card-small-font-size:  1.2rem;
+    --card-small-letter-spacing: .25rem;
+    @include media(">=medium") {
+        width: 40rem;
+        --card-large-font-size: 2rem;
+        --card-large-letter-spacing: .6rem;
+        --card-small-font-size:  1.5rem;
+        --card-small-letter-spacing: .5rem;
+    }
+}
+
+.card-front{
+    background-image: url(../imgs/bg-card-front.png);
+    z-index: 1;
+
+    //position
+    top: 90%;
+    left: 43%;
+    transform: translate(-50%,-50%);
+    @include media(">=medium"){
+        top: 100%;
+    }
+    @include media(">=large")
+    {
+        top: 20%;
+        right: -12rem;
+        left: initial;
+        transform: none;
+    }
+}
+
+.filled-white-circle{
+    aspect-ratio: 1/1;
+    background-color: var(--color-neutral-100);
+    border-radius: 100%;
+    
+    width: 3.5rem;
+    @include media(">=medium"){
+        width: 4.5rem;
+    }
+    
+    //position
+    position: absolute;
+    top: 15%;
+    left: 8%;
+}
+.outline-white-circle{
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    border: 1px solid var(--color-neutral-100);
+    width: 2rem;
+
+    //position
+    position: absolute;
+    top: 20.5%;
+    left: 24%;
+}
+
+.card-number{
+    color: var(--color-neutral-100);
+    font-size: var(--card-large-font-size);
+    letter-spacing: var(--card-large-letter-spacing);
+   
+    //position
+    position: absolute;
+    left: 8%;
+    bottom: 30%;
+    @include media('>=medium'){
+        bottom: 35%;
+    }
+}
+
+.name{
+    color: var(--color-neutral-100);
+    font-size: var(--card-small-font-size);
+    letter-spacing: var(--card-small-letter-spacing);
+    text-transform: uppercase;
+    
+    //position
+    position: absolute;
+    left: 8%;
+    bottom: 12%;
+}
+
+.expiry-date{
+    color: var(--color-neutral-100);
+    font-size: var(--card-small-font-size);
+    letter-spacing: var(--card-small-letter-spacing);
+    
+    //position
+    position: absolute;
+    right: 5%;
+    bottom: 12%;
+}
+
+.card-back{
+    background-image: url(../imgs/bg-card-back.png);
+    
+    //position
+    bottom: 50%;
+    right: 44%;
+    transform: translate(50%,50%);
+    @include media(">=large")
+    {
+        bottom: 20%;
+        right: -20rem;
+        transform: none;
+    }
+}
+
+.cvv{
+    font-size: var(--card-small-font-size);
+    letter-spacing: var(--card-large-letter-spacing);
+    color: var(--color-neutral-100);
+
+    //position
+    position: absolute;
+    top: 45%;
+    right: 12%;
+}

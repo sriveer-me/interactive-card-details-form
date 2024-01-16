@@ -14,6 +14,7 @@ main{
 }
 
 .gradient-show{
+    position: relative;
     background-size: cover;
     background-image: url(./imgs/bg-main-mobile.png);
     @include media(">=large"){
