@@ -13,6 +13,7 @@
     "parcel": "^2.10.3"
   },
   "dependencies": {
+    "gsap": "^3.12.4",
     "include-media": "^2.0.0"
   }
 }

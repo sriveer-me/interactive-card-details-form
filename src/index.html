@@ -14,10 +14,6 @@
     <!-- main stylesheet -->
     <link rel="stylesheet" href="style.scss">
 
-    <!-- Web Components -->
-    <script src="./components/input.ts"></script>
-    <script type="module" src="./components/card.ts"></script>
-
     <!-- main js module -->
     <script type="module" src="./main.ts"></script>
 </head>
@@ -95,13 +91,27 @@
         <span class="cvv">000</span>
     </template>
 
+    <!-- this is a pageTemplate for testing the page viewer, its also marked as the default -->
+    <template id="home-page" data-default-pageTemplate="true">
+        <h1>this is the home page</h1>
+        <button onclick="window['OnHandleClickSuccess']()">click to success!</button>
+    </template>
+
+    <!-- this is also a pageTemplate for testing the page viewer -->
+    <template id="success-page">
+        <h1>Congrats on Success</h1>
+        <button>click to go home:></button>
+    </template>
+
     <!-- <app-input id="name-input"/> -->
     <main>
         <div class="gradient-show">
             <app-card-front></app-card-front>
             <app-card-back></app-card-back>
         </div>
-        <div class="form-show"></div>
+        <div class="form-show">
+            <app-page-viewer></app-page-viewer>
+        </div>
     </main>
 </body>
 </html>
