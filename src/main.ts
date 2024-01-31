@@ -1,6 +1,9 @@
 // web components import
-import './components/input';
+import './components/Input.ts';
+import DateInput from './components/DateInput.ts';
+import './components/DateInput.ts';
 import './components/card';
+
 import getPageViewer from './components/PageViewer.ts';
 
 // setup handlers to compute gradient show and form show widths on demand
@@ -12,3 +15,15 @@ function OnHandleClickSuccess(){
 }
 
 window['OnHandleClickSuccess'] = OnHandleClickSuccess;
+
+const submitHomeButton = document.querySelector('.home-submit') as HTMLButtonElement;
+submitHomeButton.addEventListener('click',(event: MouseEvent) => {
+    event.preventDefault();
+
+    const dateInput = document.querySelector('.date-input') as DateInput;
+    const obj = dateInput.getDateOnField();
+
+    if(obj.success === true){
+        console.log(`mm/yy : ${obj.month}/${obj.year}`);
+    }
+});

@@ -19,59 +19,6 @@
 </head>
 <body>
 
-    <!-- template for the input field -->
-    <template id="input-template">
-        <style>
-            label{
-                display: flex;
-                flex-direction: column;
-                max-width: 40rem;
-                row-gap: var(--spacing-03);
-            }
-
-            .name-text{
-                font-size: 1.3rem;
-                text-transform: uppercase;
-                color: var(--color-neutral-800);
-                letter-spacing: .15rem;
-            }
-
-            input{
-                transition: border .1s ease-in-out;
-                padding: var(--spacing-03);
-                font-family: inherit;
-                font-size: 1.8rem;
-                border-radius: 4px;
-                border: 1px solid var(--color-neutral-700);
-            }
-            input:focus{
-                border: 1px solid var(--dark-viola);
-                outline: none;
-            }
-            
-            .error-text{
-                transition: opacity .1s ease-in-out;
-                visibility: hidden;
-                opacity: 0;
-                font-size: 1.4rem;
-                color: var(--red);
-            }
-
-            label.error input{
-                border: 1px solid var(--red);
-            }
-            label.error .error-text{
-                visibility: visible;
-                opacity: 1;
-            }
-        </style>
-        <label class="error">
-            <span class="name-text">Cardholder Name</span>
-            <input type="text">
-            <span class="error-text">Error on input field!</span>
-        </label>
-    </template>
-
     <!-- template for the card front -->
     <template id="card-front-template">
         <span class="filled-white-circle"></span>
@@ -93,8 +40,10 @@
 
     <!-- this is a pageTemplate for testing the page viewer, its also marked as the default -->
     <template id="home-page" data-default-pageTemplate="true">
-        <h1>this is the home page</h1>
-        <button onclick="window['OnHandleClickSuccess']()">click to success!</button>
+        <form action="">
+            <app-date-input class="date-input"></app-date-input>
+            <button class="home-submit">Submit</button>
+        </form>
     </template>
 
     <!-- this is also a pageTemplate for testing the page viewer -->
