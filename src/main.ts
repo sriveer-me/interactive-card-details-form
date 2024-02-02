@@ -4,6 +4,10 @@ import DateInput from './components/DateInput.ts';
 import './components/DateInput.ts';
 import './components/card';
 
+import './components/NameInput.ts';
+import './components/CardNumberInput.ts';
+import './components/CvcInput.ts';
+
 import getPageViewer from './components/PageViewer.ts';
 
 // setup handlers to compute gradient show and form show widths on demand

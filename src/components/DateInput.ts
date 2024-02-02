@@ -48,7 +48,6 @@ export default class DateInput extends Input {
         });
 
         // Step 3: setup what to focus when label is clicked
-        this.setupLabelName();
         const labelElement = this.querySelector('label') as HTMLLabelElement;
         labelElement.addEventListener("click",(e: MouseEvent) => {
             e.preventDefault(); //do not select the first input by default
@@ -68,6 +67,13 @@ export default class DateInput extends Input {
                 monthInput.focus();
             }
         });
+    }
+
+    /**
+     * Get name of the date field
+     */
+    protected override getLabelName(): string {
+        return 'exp. date (mm/yy)';
     }
 
     /**
