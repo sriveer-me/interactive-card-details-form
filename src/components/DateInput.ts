@@ -1,4 +1,12 @@
-import Input from './Input.ts';
+import Input,{IValue} from './Input.ts';
+
+/**
+ * Specialization on the IValue interface, specific to this component date
+ */
+interface IDateValue extends IValue {
+    month?: number,
+    year?: number
+}
 
 /**
  * Date input containing two fields, a month and year.. 
@@ -102,9 +110,9 @@ export default class DateInput extends Input {
 
     /**
      * Use this function to query date selected by the user
-     * @returns an object with atleast a field called success, if success is true.. then I can expect to find both month and year
+     * @returns an object which will have the month and year set if success is true
      */
-    public getDateOnField(): {success: boolean, month?: number, year?: number} {
+    public override tryGetValue(): IDateValue {
         
         let numYear: number | undefined;
         let errorMessages: Array<string> = [];

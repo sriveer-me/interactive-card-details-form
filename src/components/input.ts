@@ -1,9 +1,13 @@
 import './Input.scss';
 
+export interface IValue {
+    success: boolean
+}
+
 /**
  * Base class for all inputs
  */
-export default class Input extends HTMLElement {
+export default abstract class Input extends HTMLElement {
 /**
      * Constructor does nothing special
      */
@@ -78,4 +82,9 @@ export default class Input extends HTMLElement {
             errorTextNode.textContent = text;
         }
     }
+
+    /**
+     * This method when called will return the value on given input field
+     */
+    public abstract tryGetValue(): IValue;
 }

@@ -1,4 +1,11 @@
-import Input from './Input';
+import Input,{IValue} from './Input';
+
+/**
+ * Specialization on IValue interface, specific to this type
+ */
+interface INameValue extends IValue{
+    name?: string
+}
 
 /**
  * This class is responsible for creating the component app-name-input useful for creating the name
@@ -30,8 +37,25 @@ export default class InputField extends Input {
      * Get the value entered in as name
      * @returns value on the input, null if in error, will internally handle error setting
      */
-    public getNameOnField(): string | null {
+    public tryGetNameOnField(): string | null {
         return this._nameField?.value || null;
+    }
+
+    /**
+     * Use this method to get the 
+     * @returns the name entered if possible
+     */
+    public override tryGetValue(): INameValue {
+        const name: string = this._nameField?.value || "";
+        let success: boolean = false;
+        if(name === ""){
+            this.setError("Can't be blank");
+        }
+        else{
+            this.setError(null);
+            success = true;
+        }
+        return {success, name}
     }
 }
 
