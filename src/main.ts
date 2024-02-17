@@ -12,6 +12,8 @@ import CardNumberInput from './components/CardNumberInput.ts';
 import DateInput, { IDateInputValue } from './components/DateInput.ts';
 import CVCInput from './components/CVCInput.ts';
 import { CardBack, CardFront } from './components/card.ts';
+import BaseInput from './components/Input/BaseInput.ts';
+import getPageViewer,{PageViewer} from './components/PageViewer.ts';
 
 //Get all the inputs on form
 const nameInput = document.getElementById('name-input') as NameInput;
@@ -33,9 +35,21 @@ cvcInput.addEventListener('input',(e: any) => CardBackComponent.setCVCToDisplay(
 // Listen to the form submit event
 submit.addEventListener('click',function(e){
     e.preventDefault();
+    const allInputs: Array<BaseInput> = [
+        nameInput,
+        cardNumberInput,
+        dateInput,
+        cvcInput
+    ];
 
-    nameInput.displayErrorIfAny();
-    cardNumberInput.displayErrorIfAny();
-    dateInput.displayErrorIfAny();
-    cvcInput.displayErrorIfAny();
+    let allClear = true;
+    allInputs.forEach((input: BaseInput) => allClear = allClear && !(input.inError()[0]));
+    if(allClear === true){
+        //Move to and show success page
+        const pageViewer: PageViewer = getPageViewer();
+        pageViewer.navigateTo('success-page');
+    } 
+    else {
+        allInputs.forEach((input: BaseInput) => input.displayErrorIfAny());
+    }
 })

@@ -6,7 +6,7 @@ import gsap from "gsap";
  * Atleast one pageTemplate must be marked with the attribute data-default-pageTemplate when using the PageViewer
  * A Page is a section created internally by the PageViewer, this is what the user sees, all the contents of the template are wrapped up in a section
  */
-class PageViewer extends HTMLElement {
+export class PageViewer extends HTMLElement {
 
     /**
      * Control on how long should it take for each step of the transition to take in seconds
