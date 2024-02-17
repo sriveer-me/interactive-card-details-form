@@ -1,63 +1,47 @@
-import Input,{IValue} from './Input';
+import Input from "./Input/Input";
 
-/**
- * Specialization on IValue interface, specific to this type
- */
-interface INameValue extends IValue{
-    name?: string
-}
-
-/**
- * This class is responsible for creating the component app-name-input useful for creating the name
- */
-export default class InputField extends Input {
-    
-    private _nameField: HTMLInputElement | null = null
-
+export default class NameInput extends Input {
     /**
-     * Name component requires one field; override to specify that
-     * @returns input fields associated with this component
-     */
-    protected override handleCreationOfInputFields(): HTMLInputElement[] {
-        const nameInputField = document.createElement('input');
-        nameInputField.placeholder = "e.g Jane Appleseed";
-        this._nameField = nameInputField; 
-        return [nameInputField];
-    }
-
-    /**
-     * override to set the name of this input
-     * @returns labelName
+     * Override to get name of the label
      */
     protected override getLabelName(): string {
-        return 'cardholder name';
+        return 'name'
+    }
+    protected readonly placeholderText: string = "e.g. JaneAppleseed";
+    protected inputMaxLength: number = 20;
+    
+    /**
+     * Concrete implementation of inError method, will now know if in error.
+     * @returns an array containing an inError boolean flag and a message, this message will be null if flag is false
+     */
+    public override inError(): [boolean, string | null] {
+        
+        let inError = false;
+        let errorMessage: string | null = null;
+        
+        const value = this.getRawInputValue();
+        
+        if(value === "") {
+            inError = true;
+            errorMessage = "can't be blank";
+        }
+
+        return [inError,errorMessage];
     }
 
     /**
-     * Get the value entered in as name
-     * @returns value on the input, null if in error, will internally handle error setting
+     * The value string has changed, see if you want to do some processing.
+     * @param newStringValue : this is the value currently on input, use this to do processing in child 
+     * @returns: this return value will be the new value on the input, useful for formatting if nothing else (ex- credit card number).
      */
-    public tryGetNameOnField(): string | null {
-        return this._nameField?.value || null;
-    }
-
-    /**
-     * Use this method to get the 
-     * @returns the name entered if possible
-     */
-    public override tryGetValue(): INameValue {
-        const name: string = this._nameField?.value || "";
-        let success: boolean = false;
-        if(name === ""){
-            this.setError("Can't be blank");
+    protected handleValueStringChanged(newStringValue: string): string {
+        let str: string = newStringValue.slice(0,this.inputMaxLength);
+        if(str.length > 0){
+            const lastChar = str[str.length -1];
+            if(/[A-Za-z]/.test(lastChar) === true){
+                str = str.slice(0,str.length-1);
+            }
         }
-        else{
-            this.setError(null);
-            success = true;
-        }
-        return {success, name}
-    }
+        return str;
+    };
 }
-
-//Register the custom component in question
-customElements.define('app-name-input',InputField);

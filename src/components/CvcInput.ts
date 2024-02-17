@@ -1,57 +1,51 @@
-import Input,{IValue} from "./Input";
+import Input from "./Input/Input";
 
-
-interface ICvcValue extends IValue {
-    cvcValue?: string
-}
-
-/**
- * Component class to get and validate cvc input from the user
- */
-class CvcInput extends Input {
-
-    private _cvcInput: HTMLInputElement | undefined;
-
+export default class CVCInput extends Input {
     /**
      * Override to get name of the label
      */
     protected override getLabelName(): string {
         return 'cvc'
     }
+    protected readonly placeholderText: string = "e.g. 123";
+    protected inputMaxLength: number = 3;
+    
+    /**
+     * Concrete implementation of inError method, will now know if in error.
+     * @returns an array containing an inError boolean flag and a message, this message will be null if flag is false
+     */
+    public override inError(): [boolean, string | null] {
+        
+        let inError = false;
+        let errorMessage: string | null = null;
+        
+        const value = this.getRawInputValue();
+        const numValue: number = parseInt(value);
+        
+        if(value === "") {
+            inError = true;
+            errorMessage = "can't be blank";
+        }
+        else if(!(Number.isInteger(value) && numValue >= 100 && numValue < 1000)){
+            inError= true;
+            errorMessage = "Invalid CVC";
+        }
+        return [inError,errorMessage];
+    }
 
     /**
-     * Cvc input requires one field that accepts three numbers only
+     * The value string has changed, see if you want to do some processing.
+     * @param newStringValue : this is the value currently on input, use this to do processing in child 
+     * @returns: this return value will be the new value on the input, useful for formatting if nothing else (ex- credit card number).
      */
-    protected handleCreationOfInputFields(): HTMLInputElement[] {
-        const inputField: HTMLInputElement = document.createElement('input') as HTMLInputElement;
-        inputField.placeholder = "e.g. 123";
-
-        this._cvcInput = inputField;
-
-        inputField.addEventListener('input',function(){
-            let str: string = inputField.value.slice(0,3);
-            if(str.length > 0){
-                const lastChar = str[str.length -1];
-                if(/\d/.test(lastChar) === false){
-                    str = str.slice(0,str.length-1);
-                }
-            }
-            inputField.value = str;
-        });
-
-        return [inputField];
-    }
-
-    public override tryGetValue(): ICvcValue {
-        const value:number = parseInt(this._cvcInput?.value || "");
-        if(Number.isInteger(value) && value >= 100 && value < 1000){
-            return {
-                success: true,
-                cvcValue: value.toString()
+    protected handleValueStringChanged(newStringValue: string): string {
+        let str: string = newStringValue.slice(0,3);
+        if(str.length > 0){
+            const lastChar = str[str.length -1];
+            if(/\d/.test(lastChar) === false){
+                str = str.slice(0,str.length-1);
             }
         }
-        else return {success: false}
-    }
+        return str;
+    };
 }
-
-customElements.define('app-cvc-input',CvcInput);

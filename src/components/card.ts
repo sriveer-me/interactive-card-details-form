@@ -9,7 +9,7 @@ class Card extends HTMLElement {
     }
 }
 
-class CardFront extends Card {
+export class CardFront extends Card {
     constructor(){
         super();
     }
@@ -27,7 +27,7 @@ class CardFront extends Card {
     }
 }
 
-class CardBack extends Card {
+export class CardBack extends Card {
     constructor(){
         super();
     }
@@ -60,6 +60,3 @@ class CardBack extends Card {
         }
     }
 }
-
-customElements.define("app-card-front",CardFront);
-customElements.define("app-card-back",CardBack);

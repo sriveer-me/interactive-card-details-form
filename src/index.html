@@ -41,13 +41,13 @@
     <!-- this is a pageTemplate for testing the page viewer, its also marked as the default -->
     <template id="home-page" data-default-pageTemplate="true">
         <form action="">
-            <app-name-input></app-name-input>
-            <app-card-number-input></app-card-number-input>
+            <app-name-input id="name-input"></app-name-input>
+            <app-card-number-input id="card-number-input"></app-card-number-input>
             <div class="flex">
-                <app-date-input></app-date-input>
-                <app-cvc-input></app-cvc-input>
+                <app-date-input id="date-input"></app-date-input>
+                <app-cvc-input id="cvc-input"></app-cvc-input>
             </div>
-            <button class="btn">submit</button>
+            <button class="btn" id="submit-details-button">submit</button>
         </form>
     </template>
 
