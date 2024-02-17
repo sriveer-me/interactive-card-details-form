@@ -23,7 +23,7 @@ export default class NameInput extends Input {
         
         if(value === "") {
             inError = true;
-            errorMessage = "can't be blank";
+            errorMessage = this.BLANK_ERROR_MSG;
         }
 
         return [inError,errorMessage];
@@ -35,10 +35,10 @@ export default class NameInput extends Input {
      * @returns: this return value will be the new value on the input, useful for formatting if nothing else (ex- credit card number).
      */
     protected handleValueStringChanged(newStringValue: string): string {
-        let str: string = newStringValue.slice(0,this.inputMaxLength);
+        let str: string = newStringValue.trimStart().slice(0,this.inputMaxLength);
         if(str.length > 0){
             const lastChar = str[str.length -1];
-            if(/[A-Za-z]/.test(lastChar) === true){
+            if(/[A-Za-z ]/.test(lastChar) === false){
                 str = str.slice(0,str.length-1);
             }
         }

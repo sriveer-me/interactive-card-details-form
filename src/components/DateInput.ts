@@ -18,11 +18,11 @@ export default class DateInput extends BaseInput {
         return "exp. date (mm/yy)";
     }
 
-    private readonly MONTH_BLANK_ERROR: string = "month can't be blank";
-    private readonly YEAR_BLANK_ERROR: string = "year can't be blank";
-    private readonly INVALID_MONTH_ERROR: string = "invalid month";
-    private readonly DATE_EXPIRED_ERROR: string = "can't be expired";
-    private readonly INVALID_DATE_ERROR: string = "invalid date";
+    private readonly MONTH_BLANK_ERROR: string = "Month can't be blank";
+    private readonly YEAR_BLANK_ERROR: string = "Year can't be blank";
+    private readonly INVALID_MONTH_ERROR: string = "Invalid month";
+    private readonly DATE_EXPIRED_ERROR: string = "Can't be expired";
+    private readonly INVALID_DATE_ERROR: string = "Invalid date";
 
     /**
      * Override provided to create input fields inside this element

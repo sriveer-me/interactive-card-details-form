@@ -7,8 +7,9 @@ export default class CardNumberInput extends Input {
     protected override getLabelName(): string {
         return 'card number';
     }
-    protected placeholderText: string = "1234 5678 9123 0000";
-    protected inputMaxLength: number = 19;
+    protected readonly placeholderText: string = "1234 5678 9123 0000";
+    protected readonly inputMaxLength: number = 19;
+    protected readonly INVALID_CARD_NUMBER_MSG = "Invalid card number";
 
     /**
      * Concrete implementation of inError method, will now know if in error.
@@ -21,7 +22,7 @@ export default class CardNumberInput extends Input {
 
         if(value === ""){
             inError = true;
-            errorMessage = "can't be blank";
+            errorMessage = this.BLANK_ERROR_MSG;
         }
         else {
             value = value
@@ -30,7 +31,7 @@ export default class CardNumberInput extends Input {
                         .join("");
             if(value.length !== 16){
                 inError = true;
-                errorMessage = "invalid card number";
+                errorMessage = this.INVALID_CARD_NUMBER_MSG;
             }
         }
 

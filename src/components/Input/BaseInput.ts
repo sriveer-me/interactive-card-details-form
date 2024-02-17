@@ -33,7 +33,7 @@ export default abstract class BaseInput extends HTMLElement {
         <label>
             <span class="name-text"></span>
             <span class="input-rack"></span>
-            <span class="error-text">Error on input field!</span>
+            <span class="error-text">placeholder error</span>
         </label>
         `;
 
@@ -47,9 +47,12 @@ export default abstract class BaseInput extends HTMLElement {
 
         //Clear errors when they no longer exist
         this.addEventListener('input',function(){
-            if(this.tryClearErrorFlag === true && this.inError()[0] === false){
-                this.tryClearErrorFlag = false;
-                this.setError(null);
+            if(this.tryClearErrorFlag === true ) {
+                const inError = this.inError();
+                if(inError[0] === false){
+                    this.tryClearErrorFlag = false;
+                }
+                this.setError(inError[1])                
             }
         }.bind(this));
     }

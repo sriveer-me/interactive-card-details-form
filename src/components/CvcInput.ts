@@ -8,7 +8,8 @@ export default class CVCInput extends Input {
         return 'cvc'
     }
     protected readonly placeholderText: string = "e.g. 123";
-    protected inputMaxLength: number = 3;
+    protected readonly inputMaxLength: number = 3;
+    private readonly INVALID_CVC_MSG = "Invalid cvc";
     
     /**
      * Concrete implementation of inError method, will now know if in error.
@@ -24,11 +25,11 @@ export default class CVCInput extends Input {
         
         if(value === "") {
             inError = true;
-            errorMessage = "can't be blank";
+            errorMessage = this.BLANK_ERROR_MSG;
         }
-        else if(!(Number.isInteger(value) && numValue >= 100 && numValue < 1000)){
+        else if(numValue < 100) {
             inError= true;
-            errorMessage = "Invalid CVC";
+            errorMessage = this.INVALID_CVC_MSG;
         }
         return [inError,errorMessage];
     }

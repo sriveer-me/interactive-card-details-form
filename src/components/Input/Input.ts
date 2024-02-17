@@ -16,6 +16,7 @@ export default abstract class Input extends BaseInput {
 
     protected readonly placeholderText: string = "placeholder text";
     protected readonly inputMaxLength: number = 20;
+    protected readonly BLANK_ERROR_MSG = "Can't be blank";
 
     /**
      * Creates one input field 
