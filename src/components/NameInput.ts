@@ -8,7 +8,7 @@ export default class NameInput extends Input {
         return 'name'
     }
     protected readonly placeholderText: string = "e.g. JaneAppleseed";
-    protected inputMaxLength: number = 20;
+    protected inputMaxLength: number = 18;
     
     /**
      * Concrete implementation of inError method, will now know if in error.
