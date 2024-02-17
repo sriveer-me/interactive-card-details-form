@@ -1,4 +1,4 @@
-# Live On : 
+# Live On : https://master--interactive-card-app-sriveer.netlify.app/
 
 ## Frontend Mentor - Interactive card details form solution
 
@@ -26,13 +26,16 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+#### Desktop
+![desktop screenshot](./screenshot-desktop.png)
 
+#### Mobile
+![mobile screenshot](./screenshot-mobile.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/sriveer-me/interactive-card-details-form](https://github.com/sriveer-me/interactive-card-details-form)
+- Live Site URL: [https://master--interactive-card-app-sriveer.netlify.app/](https://master--interactive-card-app-sriveer.netlify.app/)
 
 ## My process
 
