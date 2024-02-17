@@ -51,6 +51,54 @@ form{
     }
 }
 
+.success-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: var(--spacing-05);
+
+    width: 100%;
+    padding: 0 var(--spacing-04);
+
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-13%);
+
+    @include media(">=medium"){
+        max-width: 40rem;
+    }
+
+    @include media(">=large"){
+        left: 55%;
+        transform: translateY(-50%);
+    }
+
+    img{
+        width: 6.4rem;
+    }
+
+    .thanks-banner{
+        margin: var(--spacing-05) 0;
+    }
+
+    h2{
+        font-size: 3.4rem;
+        letter-spacing: .4rem;
+        text-align: center;
+        text-transform: uppercase;
+        color: var(--color-neutral-800);
+
+        margin-bottom: var(--spacing-03);
+    }
+
+    p{
+        color: var(--color-neutral-700);
+        letter-spacing: .15rem;
+    }
+}
+
 .btn{
     transition: all .25s ease-in-out;
 
@@ -60,6 +108,7 @@ form{
     border: none;
     padding: var(--spacing-05) 0;
     border-radius: 5px;
+    width: 100%;
 
     transform: scale(1,1);
 

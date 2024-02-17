@@ -8,6 +8,8 @@ import gsap from "gsap";
  */
 export class PageViewer extends HTMLElement {
 
+    public pageSetupDictionary: Map<string,Function> = new Map<string,Function>();
+
     /**
      * Control on how long should it take for each step of the transition to take in seconds
      * Ex- navigate to new page is two steps, [remove first page, append new page] so it will take 1.2s on default value of .6s
@@ -93,6 +95,10 @@ export class PageViewer extends HTMLElement {
         //step two, create the new page and append it to the page viewer
         const newPage = this.createPage(templatePageId);
         this.append(newPage);
+
+        if(this.pageSetupDictionary.has(templatePageId)){
+            (this.pageSetupDictionary.get(templatePageId) as Function)()
+        }
 
         //step three, animate the new page into view..
         gsap.fromTo(newPage,{opacity: 0},{opacity: 1,duration: this.pageTransitionStepDuration});
